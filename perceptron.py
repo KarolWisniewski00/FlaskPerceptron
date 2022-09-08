@@ -1,22 +1,12 @@
 import random
 
 class Perceptron():
-
-    def __init__(self):
+    def __init__(self, dataTable):                          #dataTable - lista w liście(im więcej tym lepiej)
         self.weightFunction1=random.randrange(-1000,1000)   #Losowa waga 1 do funkcji aktywacji
         self.weightFunction2=random.randrange(-1000,1000)   #Losowa waga 2 do funkcji aktywacji    
         self.weightBias=random.randrange(-1000,1000)        #Losowa waga bias do funkcji aktywacji
-        self.step=0.2       #Szybkość uczenia neuronu
-        self.dataTable=[    #Dane treningowe które można pobrać z pliku bądź bazy danych. [Długość, Średnica, Rodzaj] - Obrączka bądź długopis
-            [23,4,1],       #Długopis
-            [18,3,1],       #Długopis
-            [8,2,1],        #Długopis
-            [200,30,1],     #Długopis
-            [8,150,0],      #Obrączka
-            [30,350,0],     #Obrączka
-            [30,100,0],     #Obrączka
-            [10,200,0],     #Obrączka
-        ]
+        self.step=0.2                                       #Szybkość uczenia neuronu 
+        self.dataTable=dataTable                            #Dane treningowe [Długość, Średnica, Rodzaj] - Obrączka bądź długopis
 
     def genDataTable(self):
         for row in self.dataTable:
@@ -72,8 +62,29 @@ class Perceptron():
         for i in self.neuron():
             print(i)
         
+    def use(self, input1, input2):
+        #FUNCTION ACTIVATION SECTION
+        output=self.weightBias+(input1*self.weightFunction1)+(input2*self.weightFunction2)
+
+        #PRINT SECTION - POKAŻ OUTPUTA
+        if output>0:
+            print('Output from neuron: 0')
+        elif output<0:
+            print('Output from neuron: 1')
+
 
 if __name__=='__main__':
-    perceptron=Perceptron()
+    #EXAMPLE
+    perceptron=Perceptron([
+            [23,4,1],
+            [18,3,1],
+            [8,2,1],
+            [200,30,1],
+            [8,150,0],
+            [30,350,0],
+            [30,100,0],
+            [10,200,0],
+        ])
     perceptron.training()
+    perceptron.use(200,35)
     
