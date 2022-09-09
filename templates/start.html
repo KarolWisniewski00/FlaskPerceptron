@@ -1,0 +1,68 @@
+{% extends "layouts/main.html"%}
+
+{% block content %}
+<h1 class="mt-3">Data training</h1>
+<p>Add value in correct row and column. You shound use intiger, in other case you can't go next. Example of use is passed.That example distinguish ring and pen. Values in <span class="text-primary">INPUT 1</span> are lengths. Values in <span class="text-danger">INPUT 2</span> are diameters. Values in <span class="text-secondary">OUTPUT</span> are pen (1) and ring (0). Step as lower precisely, as highly as faster in process of learning</p>
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+<form action="training" method="POST" class="pt-3 mb-2">
+    <!--TOKEN-->
+    {{ form.csrf_token }}
+    <h3>First item</h3>
+    <div class="input-group">
+        <span class="form-control my-2 border-primary">INPUT 1</span>
+        <span class="form-control my-2 border-danger">INPUT 2</span>
+        <span class="form-control my-2 border-secondary">OUTPUT</span>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input1" value="23" placeholder="INPUT 1" required>
+        <input type="text" class="form-control my-2 border-danger" name="input2" value="4" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input3" value="1" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input4" value="18" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input5" value="3" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input6" value="1" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input7" value="8" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input8" value="2" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input9" value="1" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input10" value="200" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input11" value="30" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input12" value="1" placeholder="OUTPUT"required>
+    </div>
+    <h3>Second item</h3>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input13" value="8" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input14" value="150" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input15" value="0" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input16" value="30" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input17" value="350" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input18" value="0" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input19" value="30" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input20" value="100" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input21" value="0" placeholder="OUTPUT"required>
+    </div>
+    <div class="input-group">
+        <input type="text" class="form-control my-2 border-primary" name="input22" value="10" placeholder="INPUT 1"required>
+        <input type="text" class="form-control my-2 border-danger" name="input23" value="200" placeholder="INPUT 2"required>
+        <input type="text" class="form-control my-2 border-secondary" name="input24" value="0" placeholder="OUTPUT"required>
+    </div>
+    <h3>Step</h3>
+    <input type="text" class="form-control my-2" name="STEP" value="0.2" placeholder="STEP"required>
+    <input type="submit" value="Submit" class="btn btn-primary mt-5">
+</form>
+<button class="btn btn-secondary mb-5 disabled">Add new row</button>
+<button class="btn btn-secondary mb-5 disabled">Reset</button>
+<button class="btn btn-secondary mb-5 disabled">Load data from file</button>
+{% endblock %}

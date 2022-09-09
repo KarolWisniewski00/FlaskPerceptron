@@ -1,0 +1,23 @@
+{% extends "layouts/main.html"%}
+
+{% block content %}
+<h1 class="mt-3">Training:{{training}}</h1>
+{% if result==1 or result==0 %}
+<h3 class="text-muted">OUTPUT:{{result}}</h3>
+{% endif %}
+<p>Add value to your trained perceprton. After click the Submit you will see your <span class="text-secondary">OUTPUT</span></p>
+{% if error %}
+<div class="alert alert-danger" role="alert">
+    {{error}}
+</div>
+{% endif %}
+<form action="use" method="POST" class="pb-5 pt-3">
+    <div class="input-group">
+        <!--TOKEN-->
+        {{ form.csrf_token }}
+        <input type="text" class="form-control my-2 border-primary" name="input1" placeholder="INPUT 1" required>
+        <input type="text" class="form-control my-2 border-danger" name="input2" placeholder="INPUT 2" required>
+    </div>
+    <input type="submit" class="btn btn-primary mt-5" value="Submit">
+</form>
+{% endblock %}
